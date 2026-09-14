@@ -1,0 +1,2836 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="The Wedding of Sepri & Winy - 26 September 2026">
+
+    <meta property="og:title" content="The Wedding of Sepri& Winy">
+    <meta property="og:description" content="Tanpa mengurangi rasa hormat, kami mengundang Anda...">
+    <meta property="og:image" content="assets/img/thumbnail.jpg">
+    <meta name="theme-color" content="#2F3E2E">
+    <title>The Wedding of Sepri & Winy</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Cinzel+Decorative:wght@400;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-text: #2F3E2E;
+            --gold: #C5A059;
+            --gold-light: #E8DCC4;
+            --bg-body: #F7F5F0;
+            --glass: rgba(255, 255, 255, 0.6);
+            --transition-slow: 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* --- BASE STYLES --- */
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: var(--bg-body);
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            color: var(--main-text);
+            overflow-x: hidden;
+            overflow-y: hidden; /* Locked until opened */
+        }
+        
+        body.loaded { overflow-y: auto; }
+
+        h1, h2, h3, .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .font-decor { font-family: 'Cinzel Decorative', serif; }
+        .font-arabic { font-family: 'Amiri', serif; line-height: 2.2; }
+        .text-gold { color: var(--gold) !important; }
+        
+        /* --- UTILITIES --- */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+/* --- CONFIGURATION --- */
+:root {
+    --amoled-black: #000000; /* Hitam Pekat */
+    --gold-primary: #D4AF37;
+    --gold-bright: #FFF8E7;
+    --ease-drama: cubic-bezier(0.85, 0, 0.15, 1); /* Gerakan pembuka yang sangat dramatis */
+}
+
+#preloader {
+    position: fixed; inset: 0; z-index: 99999;
+    display: flex; justify-content: center; align-items: center;
+    background: var(--amoled-black); overflow: hidden;
+}
+
+/* --- AMBIANCE (Cahaya Latar Sangat Redup) --- */
+.ambiance-light {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+    z-index: 0; pointer-events: none;
+}
+
+/* --- CURTAINS (Black Velvet) --- */
+.curtain {
+    position: absolute; left: 0; width: 100%; height: 50.5%;
+    background-color: var(--amoled-black);
+    /* Tekstur noise sangat halus agar tidak terlihat 'mati' */
+    z-index: 10;
+    transition: transform 2s var(--ease-drama);
+    will-change: transform;
+}
+.curtain-top { top: 0; transform-origin: top; }
+.curtain-bottom { bottom: 0; transform-origin: bottom; }
+
+/* Garis Emas Tengah yang Intens */
+.curtain-top::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; 
+    height: 2px; /* Sedikit lebih tebal untuk kontras */
+    background: linear-gradient(90deg, var(--gold-primary), #ffffff, var(--gold-primary));
+    background-size: 200% auto;
+    animation: shineIntense 2.5s linear infinite;
+    /* Glow yang lebih kuat untuk background hitam */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 1), 0 0 4px rgba(255, 255, 255, 0.8);
+    z-index: 11;
+}
+
+/* --- HANDWRITING SVG (YANG ANDA SUKAI) --- */
+.svg-wrapper {
+    position: relative; width: 320px; height: auto;
+    margin-bottom: 15px; z-index: 20;
+    /* Membuat teks seolah bercahaya dari dalam */
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+}
+.text-svg-layer { width: 100%; height: 100%; }
+.handwriting-text {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 95px; font-weight: 700;
+    fill: transparent;
+    stroke: url(#richGold); /* Menggunakan gradient emas baru */
+    stroke-width: 1.2px;
+    stroke-dasharray: 600; stroke-dashoffset: 600;
+    stroke-linecap: round;
+    animation: 
+        drawGold 3s cubic-bezier(0.5, 0, 0.5, 1) forwards,
+        fillGold 1.5s ease-out 2.8s forwards;
+}
+
+/* --- CAPTION & PROGRESS --- */
+.loader-content {
+    position: relative; z-index: 20;
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.cinematic-caption {
+    font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 400;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255, 248, 231, 0.6); /* Emas pucat transparan */
+    opacity: 0;
+    /* Animasi Tracking-in (melebar saat muncul) */
+    animation: trackingIn 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) 2.5s forwards;
+}
+
+.progress-line-minimal {
+    width: 150px; height: 1px; /* Sangat tipis */
+    background: rgba(255,255,255,0.05);
+    margin-top: 25px; overflow: hidden;
+    opacity: 0; animation: fadeInSimple 1s ease-out 3s forwards;
+}
+.progress-fill-glow {
+    width: 0%; height: 100%;
+    background: var(--gold-bright);
+    box-shadow: 0 0 15px var(--gold-primary), 0 0 5px var(--gold-bright);
+    transition: width 0.1s linear;
+}
+
+/* --- GOLD DUST PARTICLES --- */
+.gold-dust { position: absolute; inset: 0; pointer-events: none; z-index: 15; }
+.speck {
+    position: absolute; background: var(--gold-bright); border-radius: 50%;
+    opacity: 0; animation: dustFloat 8s infinite linear;
+}
+.s1 { width: 2px; height: 2px; top: 80%; left: 20%; animation-duration: 9s; }
+.s2 { width: 3px; height: 3px; top: 60%; left: 75%; animation-delay: 2s; animation-duration: 12s; }
+.s3 { width: 1px; height: 1px; top: 30%; left: 40%; animation-delay: 4s; animation-duration: 7s; }
+.s4 { width: 2px; height: 2px; top: 90%; left: 60%; animation-delay: 1s; animation-duration: 10s; }
+
+/* --- KEYFRAMES --- */
+@keyframes drawGold { to { stroke-dashoffset: 0; } }
+@keyframes fillGold { from { fill: transparent; } to { fill: url(#richGold); } }
+@keyframes shineIntense { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+@keyframes trackingIn {
+    0% { letter-spacing: 10px; opacity: 0; transform: translateZ(-80px); }
+    100% { letter-spacing: 4px; opacity: 0.7; transform: translateZ(0); }
+}
+@keyframes fadeInSimple { to { opacity: 1; } }
+@keyframes dustFloat { 
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.4; }
+    100% { transform: translateY(-150px) rotate(360deg); opacity: 0; }
+}
+
+/* --- LOADED STATE (EXIT ANIMATION) --- */
+body.loaded .curtain-top { transform: translateY(-110%); } /* Tarik lebih jauh */
+body.loaded .curtain-bottom { transform: translateY(110%); }
+body.loaded .loader-content { 
+    opacity: 0; 
+    transform: scale(0.95); /* Zoom out sedikit agar elegan */
+    filter: blur(5px); /* Blur saat menghilang */
+    transition: all 1s ease-in-out; 
+}
+body.loaded #preloader { visibility: hidden; transition: visibility 0s 2s; }
+
+
+
+/* =========================================
+   COVER SECTION (GATE OPENING STYLE)
+   ========================================= */
+
+/* =========================================
+   CINEMATIC PARALLAX COVER
+/* =========================================
+   DIAGONAL CINEMATIC COVER
+   ========================================= */
+
+#cover {
+    position: fixed; inset: 0; z-index: 10000;
+    display: flex; justify-content: center; align-items: center;
+    background: #000; overflow: hidden;
+}
+
+/* State Hide */
+#cover.hide {
+    pointer-events: none;
+    visibility: hidden; transition: visibility 0s 2.5s;
+}
+
+/* --- PANEL DIAGONAL --- */
+.gate-panel {
+    position: absolute; inset: 0; 
+    width: 100%; height: 100%;
+    z-index: 1; pointer-events: none;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,1)); /* Shadow di potongan kertas */
+}
+
+/* ISI PANEL (Agar gambar tidak ikut terpotong aneh) */
+.gate-inner {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    overflow: hidden;
+    will-change: transform;
+    transition: transform 2.2s cubic-bezier(0.8, 0, 0.1, 1); /* Gerakan Lambat Mewah */
+}
+
+/* POTONGAN DIAGONAL (CLIP-PATH) 
+   Kita membagi layar jadi 2 segitiga besar.
+*/
+
+/* Panel Kiri (Bagian Atas-Kiri) */
+.gate-left { 
+    /* Potong dari pojok kiri atas ke kanan bawah */
+    clip-path: polygon(0 0, 100% 0, 40% 100%, 0% 100%);
+    z-index: 2; /* Di atas kanan */
+}
+
+/* Panel Kanan (Bagian Bawah-Kanan) */
+.gate-right {
+    /* Potong sisanya */
+    clip-path: polygon(100% 0, 100% 100%, 40% 100%);
+    z-index: 1;
+}
+
+/* ANIMASI BUKA: Geser Diagonal */
+#cover.hide .gate-left .gate-inner { transform: translate(-50%, -50%); } /* Geser ke Kiri-Atas */
+#cover.hide .gate-right .gate-inner { transform: translate(50%, 50%); }  /* Geser ke Kanan-Bawah */
+
+
+/* --- GAMBAR BACKGROUND --- */
+.gate-bg {
+    position: absolute; inset: -10%; /* Lebih besar dari layar untuk parallax */
+    width: 120%; height: 120%;
+    background-image: url('public/images/cover.jpeg'); /* URL IMAGE */
+    background-size: cover; background-position: center;
+    
+    /* Efek Zoom Out pelan saat buka */
+    transition: transform 2.5s ease-out;
+}
+#cover.hide .gate-bg { transform: scale(1.1); }
+
+/* Overlay Gelap */
+.gate-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1), rgba(0,0,0,0.95));
+}
+
+/* --- FLASH EFFECT (CAHAYA DARI CELAH) --- */
+.flash-effect {
+    position: absolute; inset: 0; z-index: 5;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease-out; /* Muncul cepat */
+}
+/* Saat tombol ditekan, flash nyala sebentar lalu mati (diatur JS) */
+#cover.flashing .flash-effect {
+    opacity: 0.6; /* Kilatan cahaya */
+    transition: opacity 0.8s ease-out;
+}
+
+
+/* --- KONTEN TENGAH --- */
+.cover-content-box {
+    position: relative; z-index: 10; width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 12vh 20px 8vh;
+    transition: opacity 1s ease;
+}
+#cover.hide .cover-content-box { opacity: 0; }
+
+/* TYPOGRAPHY */
+.title-group { text-align: center; margin-top: 40px; }
+
+.monogram-crest {
+    width: 40px; height: 40px; margin: 0 auto 15px;
+    display: flex; justify-content: center; align-items: center;
+    border: 1px solid rgba(255,255,255,0.3); border-radius: 50%;
+}
+.crest-initials { font-family: 'Cinzel Decorative'; color: #D4AF37; font-size: 0.7rem; }
+
+.wedding-subtitle {
+    font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 5px;
+    color: rgba(255,255,255,0.6); margin-bottom: 10px; text-transform: uppercase;
+}
+
+.couple-names-cover {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(3rem, 10vw, 5rem);
+    line-height: 1.1; margin: 0;
+    background: linear-gradient(to bottom, #FFF8E7, #D4AF37);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));
+}
+.ampersand-thin { font-family: 'Great Vibes'; font-size: 2rem; color: #fff; margin: 0 10px; vertical-align: middle; }
+
+/* --- TOMBOL MINIMALIS (GARIS SAJA) --- */
+.bottom-group { text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
+.guest-container { margin-bottom: 50px; }
+.to-label { font-size: 0.6rem; letter-spacing: 2px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 5px; }
+.guest-name-display { font-size: 1.4rem; color: #fff; font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,1); }
+
+.minimal-btn {
+    position: relative;
+    background: transparent; border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.btn-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; letter-spacing: 4px; color: #D4AF37;
+    text-transform: uppercase; font-weight: 600;
+    transition: letter-spacing 0.5s ease;
+}
+
+/* Garis Bawah Emas */
+.btn-line {
+    position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+    width: 40px; height: 1px;
+    background: #D4AF37;
+    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 0 10px #D4AF37;
+}
+
+/* Hover Effect */
+.minimal-btn:hover .btn-text { letter-spacing: 6px; color: #fff; }
+.minimal-btn:hover .btn-line { width: 100%; background: #fff; }
+
+/* Click Effect */
+.minimal-btn.clicked .btn-text { opacity: 0; transform: translateY(-10px); transition: 0.5s; }
+.minimal-btn.clicked .btn-line { width: 0%; opacity: 0; transition: 0.5s; }
+/* Akhir Dari style cover */
+/* --- HERO SECTION CONFIG (DARK LUXURY) --- */
+/* =========================================
+   HERO SECTION STYLES (GSAP OPTIMIZED)
+   ========================================= */
+
+/* --- HERO RESET & FIX --- */
+#hero {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background-color: #000;
+}
+
+/* Background Image */
+.hero-bg {
+    position: absolute; inset: 0;
+    /* Pastikan path gambar benar */
+    background-image: url('public/images/hero.jpeg'); 
+    background-size: cover; background-position: center;
+    width: 100%; height: 120%; z-index: 0;
+}
+
+/* Overlay Gelap (Agar teks terbaca) */
+.hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6), rgba(0,0,0,0.95));
+    z-index: 1;
+}
+
+/* --- TYPOGRAPHY (WARNA & VISIBILITY) --- */
+
+/* --- FIX UNTUK NAMA YANG HILANG --- */
+.hero-title { 
+    font-family: 'Cinzel Decorative', serif; 
+    font-size: clamp(3.5rem, 12vw, 7rem); 
+    line-height: 1; margin: 0;
+    
+    /* 1. Posisi Layer Paling Atas (PENTING) */
+    position: relative; 
+    z-index: 9999 !important; 
+    
+    /* 2. Matikan Gradient (Pakai Warna Solid Dulu) */
+    background: none !important;
+    -webkit-text-fill-color: initial !important; 
+    color: #D4AF37 !important; /* Warna Emas Solid */
+    
+    /* 3. Drop Shadow agar kontras dengan background gelap */
+    text-shadow: 0 4px 10px rgba(0,0,0,1); 
+    
+    /* 4. Paksa Muncul (Anti-Hide) */
+    visibility: visible !important; 
+    opacity: 1 !important; 
+    transform: none !important; /* Matikan posisi aneh */
+}
+
+/* Pastikan container pembungkusnya juga di atas */
+.couple-name-box {
+    position: relative;
+    z-index: 9999;
+}
+
+/* Helper Char Span (Jika JS memecah teks, pastikan ini visible) */
+.char-span {
+    display: inline-block;
+    opacity: 1 !important; /* Paksa muncul */
+    visibility: visible !important;
+}
+
+/* Helper Huruf (untuk animasi) */
+.char-span { display: inline-block; white-space: pre; }
+
+/* Teks Putih */
+.hero-subtitle, .hero-date, .scroll-hint {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: #FFFFFF !important; /* Paksa Putih */
+    text-shadow: 0 2px 5px rgba(0,0,0,1); /* Shadow hitam kuat */
+    position: relative; z-index: 10;
+    opacity: 1; 
+}
+.hero-subtitle { letter-spacing: 5px; font-size: 0.8rem; margin-bottom: 20px; }
+.hero-date { letter-spacing: 5px; color: #D4AF37 !important; margin-top: 20px; }
+.ampersand-icon { font-family: 'Great Vibes', cursive; font-size: 3rem; color: #fff; display: block; }
+
+/*======= AKHIR DARI STYLE HERO ---------*/
+/* SECTION QUR'AN --------------*/
+/* --- QURAN SECTION --- */
+.quran-section {
+    position: relative;
+    padding: 120px 20px;
+    /* Background Hitam Pekat agar nyambung dengan Hero */
+    background: #050505; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pattern Halus di Belakang (Opsional) */
+.quran-pattern {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    opacity: 0.5;
+}
+
+/* --- KARTU KUBAH KRISTAL --- */
+.quran-card {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    text-align: center;
+    
+    /* Efek Kaca Gelap (Frosted Glass) */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Border Emas Tipis */
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Bayangan lembut */
+    
+    /* Bentuk Kubah Masjid (Arch) */
+    border-radius: 200px 200px 20px 20px;
+    
+    /* Animasi Hover (Sedikit melayang) */
+    transition: transform 0.5s ease;
+}
+
+.quran-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* --- TYPOGRAPHY --- */
+
+/* 1. Basmalah menjadi Emas */
+.bismillah-img {
+    width: 180px;
+    margin-bottom: 30px;
+    /* Filter ini mengubah warna hitam SVG menjadi warna emas/kuning */
+    filter: invert(75%) sepia(26%) saturate(674%) hue-rotate(358deg) brightness(91%) contrast(89%);
+    opacity: 0.9;
+}
+
+/* 2. Teks Arab */
+.ayat-arabic {
+    font-family: 'Amiri', serif; /* Font khusus Arab */
+    font-size: 1.8rem;
+    line-height: 2;
+    margin-bottom: 20px;
+    
+    /* Warna Emas Gradient */
+    background: linear-gradient(to bottom, #FFF8E7, #D4AF37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+}
+
+/* 3. Terjemahan */
+.ayat-translation {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* 4. Garis Pembatas Kecil */
+.divider-gold {
+    height: 1px; width: 50px;
+    background: #D4AF37;
+    margin: 20px auto;
+    opacity: 0.5;
+}
+
+/* 5. Badge Surat (Ar-Rum) */
+.surah-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50px;
+    color: #D4AF37;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(212, 175, 55, 0.05);
+}
+
+/* Responsif untuk HP */
+@media (max-width: 768px) {
+    .quran-card {
+        padding: 50px 20px;
+        border-radius: 100px 100px 15px 15px; /* Lengkungan dikurangi dikit di HP */
+    }
+    .ayat-arabic { font-size: 1.4rem; }
+}
+/* --- SACRED SECTION SETUP --- */
+.sacred-section {
+    position: relative;
+    padding: 120px 20px;
+    background-color: #080808; /* Hitam pekat */
+    overflow: hidden;
+    display: flex; justify-content: center; align-items: center;
+}
+
+/* 1. ANIMATED ISLAMIC PATTERN BACKGROUND */
+.islamic-pattern {
+    position: absolute; inset: -50%; /* Lebih besar dari layar agar bisa berputar */
+    width: 200%; height: 200%;
+    /* Pattern Geometri Islam (SVG Data) */
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: rotatePattern 120s linear infinite; /* Putaran sangat lambat */
+    opacity: 0.6;
+    z-index: 0;
+}
+@keyframes rotatePattern { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Vignette (Fokus tengah) */
+.vignette-overlay {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle, transparent 20%, #000 90%);
+    z-index: 1; pointer-events: none;
+}
+
+/* --- 2. SACRED CARD (KUBAH) --- */
+.sacred-card {
+    position: relative;
+    max-width: 650px; margin: 0 auto;
+    padding: 70px 40px 50px;
+    text-align: center;
+    
+    /* Bentuk Kubah Masjid */
+    border-radius: 300px 300px 20px 20px;
+    
+    /* Glass Effect Gelap */
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* Border Emas Glowing */
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 
+        0 0 30px rgba(0,0,0,0.8), 
+        inset 0 0 20px rgba(212, 175, 55, 0.05); /* Glow dalam */
+        
+    transition: transform 0.5s ease;
+}
+
+/* Garis Outline Ganda (Double Border Effect) */
+.sacred-card::before {
+    content: ''; position: absolute;
+    inset: 5px; border-radius: 300px 300px 15px 15px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    pointer-events: none;
+}
+
+.sacred-card:hover { transform: translateY(-5px); }
+
+
+/* --- 3. TYPOGRAPHY & ELEMENTS --- */
+
+/* Bismillah jadi Emas */
+.bismillah-svg {
+    width: 160px; margin-bottom: 35px;
+    /* Filter convert Black SVG to Gold Color */
+    filter: invert(75%) sepia(26%) saturate(674%) hue-rotate(358deg) brightness(91%) contrast(89%);
+    opacity: 0.9;
+}
+
+/* Ayat Arab */
+.ayat-text {
+    font-family: 'Amiri', serif; /* Font Arab Premium */
+    font-size: 2rem;
+    line-height: 2.2;
+    margin-bottom: 25px;
+    color: #D4AF37;
+    
+    /* Efek Timbul Halus */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Divider Cantik */
+.gold-divider {
+    display: flex; align-items: center; justify-content: center;
+    margin: 20px 0 30px;
+    opacity: 0.6;
+}
+.gold-divider::before, .gold-divider::after {
+    content: ''; height: 1px; width: 60px; background: #D4AF37;
+}
+.gold-divider span { margin: 0 15px; color: #D4AF37; font-size: 1.2rem; }
+
+/* Terjemahan */
+.translation-text {
+    font-family: 'Cormorant Garamond', serif; /* Font Serif Elegan */
+    font-size: 1.1rem;
+    font-weight: 500; /* Agak tebal agar terbaca */
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+}
+
+/* Badge Surat */
+.surah-tag {
+    display: inline-block; margin-top: 30px;
+    padding: 8px 25px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    color: #D4AF37;
+    background: linear-gradient(to right, rgba(212,175,55,0.1), transparent);
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+    .sacred-card { padding: 50px 20px 40px; border-radius: 150px 150px 15px 15px; }
+    .ayat-text { font-size: 1.5rem; line-height: 2; }
+    .translation-text { font-size: 0.95rem; }
+}
+/* --- DIVINE SECTION SETUP --- */
+.divine-section {
+    position: relative;
+    padding: 140px 20px;
+    background: #000; /* Hitam pekat agar emas menonjol */
+    overflow: hidden;
+}
+
+/* 1. FIREFLIES ANIMATION (Partikel Emas Melayang) */
+.fireflies .firefly {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: #D4AF37;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #D4AF37;
+    opacity: 0;
+    animation: flyUp 10s infinite linear;
+}
+
+/* Mengatur posisi acak partikel */
+.firefly:nth-child(1) { left: 10%; bottom: -10%; animation-duration: 12s; animation-delay: 0s; }
+.firefly:nth-child(2) { left: 30%; bottom: -10%; animation-duration: 15s; animation-delay: 2s; }
+.firefly:nth-child(3) { left: 50%; bottom: -10%; animation-duration: 10s; animation-delay: 4s; }
+.firefly:nth-child(4) { left: 70%; bottom: -10%; animation-duration: 18s; animation-delay: 1s; }
+.firefly:nth-child(5) { left: 90%; bottom: -10%; animation-duration: 14s; animation-delay: 3s; }
+.firefly:nth-child(6) { left: 20%; bottom: -10%; animation-duration: 16s; animation-delay: 5s; }
+.firefly:nth-child(7) { left: 80%; bottom: -10%; animation-duration: 13s; animation-delay: 6s; }
+
+@keyframes flyUp {
+    0% { transform: translateY(0) scale(0); opacity: 0; }
+    20% { opacity: 0.8; }
+    50% { opacity: 0.4; }
+    80% { opacity: 0.8; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+/* 2. CARD DESIGN */
+.divine-card {
+    position: relative;
+    max-width: 700px; margin: 0 auto;
+    /* Glassmorphism Premium */
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px; /* Sudut sedikit melengkung */
+    padding: 20px; /* Padding luar untuk corner ornament */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
+
+.card-content {
+    padding: 60px 30px;
+    border: 1px solid rgba(212, 175, 55, 0.1); /* Border tipis di dalam */
+    border-radius: 10px;
+}
+
+/* 3. CORNER ORNAMENTS (Sudut Emas) */
+.corner-ornament {
+    position: absolute; width: 50px; height: 50px; opacity: 0.8;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+    transition: all 0.5s ease;
+}
+.top-left { top: -1px; left: -1px; }
+.top-right { top: -1px; right: -1px; transform: scaleX(-1); }
+.bottom-left { bottom: -1px; left: -1px; transform: scaleY(-1); }
+.bottom-right { bottom: -1px; right: -1px; transform: rotate(180deg); }
+
+/* Efek Hover Card: Sudut menjauh sedikit */
+.divine-card:hover .corner-ornament { width: 55px; height: 55px; opacity: 1; }
+
+/* 4. TYPOGRAPHY */
+.bismillah-gold {
+    width: 160px; margin-bottom: 40px;
+    filter: invert(75%) sepia(26%) saturate(674%) hue-rotate(358deg) brightness(91%) contrast(89%);
+}
+
+.ayat-shimmer {
+    font-family: 'Amiri', serif;
+    font-size: 2rem; line-height: 2.2; margin-bottom: 30px;
+    
+    /* SHIMMER EFFECT (Cahaya berjalan di teks) */
+    background: linear-gradient(110deg, #B38728 30%, #FFF8E7 45%, #B38728 60%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShine 5s linear infinite;
+}
+
+@keyframes textShine { to { background-position: 200% center; } }
+
+.translation-elegant {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem; font-weight: 300; font-style: italic;
+    color: rgba(255, 255, 255, 0.8); line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.surah-pill {
+    display: inline-block;
+    padding: 2px; /* Untuk border gradient */
+    background: linear-gradient(to right, transparent, #D4AF37, transparent);
+    border-radius: 50px;
+}
+.surah-pill span {
+    display: block; padding: 8px 30px;
+    background: #000; border-radius: 50px;
+    color: #D4AF37; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .ayat-shimmer { font-size: 1.5rem; }
+    .corner-ornament { width: 35px; height: 35px; }
+}
+
+/* AKHIR SECTION QUR'AN --------*/
+/* --- GALLERY LUXURY SECTION --- */
+.gallery-luxury-section {
+    padding: 100px 0;
+    background: #050505; /* Hitam pekat (Match Event Section) */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Judul (Mengambil style dari Event Section) */
+.cinematic-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.2rem; color: #D4AF37; margin-bottom: 10px;
+}
+.title-line-thread {
+    width: 60px; height: 1px; background: #D4AF37;
+    margin: 0 auto 50px; opacity: 0.5; position: relative;
+}
+.title-line-thread::after { 
+    content: ''; position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 6px; height: 6px; background: #D4AF37;
+}
+
+
+/* --- GALLERY WRAPPER --- */
+.gallery-wrapper {
+    display: flex; overflow: hidden; width: 100%;
+    /* Masking agar foto memudar di kiri & kanan layar */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.gallery-track {
+    display: flex; gap: 20px;
+    padding: 20px 0;
+    /* Animasi Jalan Terus */
+    animation: scrollGallery 40s linear infinite; 
+    width: max-content; /* Agar track memanjang sesuai konten */
+}
+
+/* Hover Paused: Agar tamu bisa lihat foto saat di-hover */
+.gallery-wrapper:hover .gallery-track { 
+    animation-play-state: paused; 
+}
+
+@keyframes scrollGallery { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
+}
+
+
+/* --- GALLERY ITEM (FOTO) --- */
+.gallery-item {
+    position: relative;
+    width: 220px; height: 320px; 
+    flex-shrink: 0; 
+    
+    /* BORDER TIPIS MEWAH (Senada dengan kartu Event) */
+    border: 1px solid rgba(212, 175, 55, 0.3); 
+    border-radius: 4px; /* Sudut sedikit rounded */
+    padding: 5px; /* Jarak antara border dan foto (Frame effect) */
+    
+    background: rgba(255,255,255,0.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%; height: 100%; 
+    object-fit: cover;
+    border-radius: 2px;
+    
+    /* Efek Hitam Putih Awal (Biar elegan) */
+    filter: grayscale(100%) contrast(110%);
+    transition: all 0.5s ease;
+}
+
+/* Saat Hover: Jadi Berwarna & Zoom Dikit */
+.gallery-item:hover {
+    transform: scale(1.05);
+    border-color: #D4AF37; /* Border jadi emas terang */
+}
+
+.gallery-item:hover img {
+    filter: grayscale(0%) contrast(100%);
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+    .gallery-item { width: 160px; height: 240px; }
+    .gallery-track { gap: 15px; }
+}
+
+/* ANIMASI SCROLL REVEAL (JS Required) */
+.reveal-up { opacity: 0; transition: all 1.5s ease; transform: translateY(50px); }
+.reveal-up.active { opacity: 1; transform: translate(0); }
+
+
+        /* --- BANK / GIFT --- */
+/* --- GIFT PREMIUM SECTION --- */
+.gift-premium-section {
+    padding: 80px 0;
+    background: #050505;
+    position: relative;
+    overflow: hidden;
+    color: #FFF;
+}
+
+/* Judul */
+.cinematic-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2rem; color: #D4AF37; margin-bottom: 5px;
+}
+.title-line-thread {
+    width: 50px; height: 1px; background: #D4AF37;
+    margin: 0 auto 30px; opacity: 0.6;
+}
+.section-quote {
+    font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+    color: #aaa; max-width: 500px; margin: 0 auto; line-height: 1.5;
+}
+
+
+/* --- THE PREMIUM CARD (BORDER UPGRADE) --- */
+.card-float-wrapper {
+    display: inline-block;
+    padding: 10px; /* Space untuk efek hover */
+}
+
+.premium-card {
+    position: relative;
+    width: 180px; height: 110px; /* Ukuran Compact */
+    border-radius: 12px;
+    
+    /* BACKGROUND KARTU GELAP */
+    background: #0a0a0a; 
+    
+    /* --- BORDER SPESIAL (Gradient Border) --- */
+    /* Ini membuat border terlihat seperti logam yang memantulkan cahaya */
+    border: 1px solid transparent; /* Base transparan */
+    background-image: linear-gradient(#0a0a0a, #0a0a0a), linear-gradient(135deg, #b88746, #fdf5a6, #b88746);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    /* ------------------------------------- */
+    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6); /* Bayangan dalam */
+    overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 15px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Variasi Warna Halus di dalam kartu */
+.bca-style::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at top right, rgba(20, 50, 100, 0.4), transparent); /* Biru gelap BCA */
+}
+.dana-style::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at top right, rgba(16, 78, 139, 0.4), transparent); /* Biru Dana */
+}
+
+/* Hover Effect: Kartu Melayang & Glow Border */
+.premium-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15); /* Glow Emas Halus */
+}
+
+
+/* --- ISI KARTU --- */
+.card-chip-gold {
+    width: 28px; height: 20px;
+    background: linear-gradient(135deg, #FFD700, #B8860B, #FFD700);
+    border-radius: 4px;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+    position: relative; z-index: 2;
+}
+
+.card-logo {
+    position: absolute; top: 15px; right: 15px;
+    font-family: 'Cinzel', serif; font-weight: 800; font-size: 0.9rem;
+    color: #FFF; font-style: italic; z-index: 2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.card-number {
+    font-family: 'Montserrat', monospace;
+    font-size: 0.9rem; color: #D4AF37; /* Emas */
+    letter-spacing: 1px; margin-top: auto; margin-bottom: 5px;
+    position: relative; z-index: 2;
+    text-shadow: 1px 1px 0 rgba(0,0,0,1); /* Emboss effect */
+}
+
+.card-holder {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.5rem; color: #ccc; letter-spacing: 1px;
+    text-transform: uppercase; position: relative; z-index: 2;
+}
+
+/* Shine Effect (Kilau Kaca) */
+.card-shine {
+    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: linear-gradient(to bottom right, rgba(255,255,255,0) 40%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 60%);
+    transform: rotate(30deg);
+    pointer-events: none;
+    animation: shineMove 6s infinite;
+}
+@keyframes shineMove { 0% { transform: translateY(-100%) rotate(30deg); } 100% { transform: translateY(100%) rotate(30deg); } }
+
+
+/* --- BAGIAN TEKS (INFO) --- */
+.gift-info { padding: 0 5px; }
+
+.bank-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem; color: #D4AF37; margin-bottom: 5px;
+}
+.acc-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; color: #ccc; margin-bottom: 12px;
+}
+
+/* Tombol Copy Mewah */
+.btn-gold-copy {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #D4AF37;
+    padding: 6px 18px; border-radius: 50px;
+    font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 1px;
+    cursor: pointer; transition: all 0.3s ease;
+    display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-gold-copy:hover {
+    background: #D4AF37; color: #000; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+.btn-gold-copy.copied {
+    background: #28a745; border-color: #28a745; color: #fff; box-shadow: none;
+}
+
+
+/* --- RESPONSIF HP --- */
+@media (max-width: 768px) {
+    /* Perkecil Kartu di HP */
+    .premium-card { width: 130px; height: 85px; padding: 10px; border-radius: 8px; }
+    
+    .card-chip-gold { width: 22px; height: 16px; }
+    .card-logo { font-size: 0.7rem; top: 10px; right: 10px; }
+    .card-number { font-size: 0.65rem; letter-spacing: 0; }
+    .card-holder { font-size: 0.4rem; }
+    
+    /* Info Text */
+    .bank-title { font-size: 1rem; }
+    .acc-name { font-size: 0.6rem; }
+    .btn-gold-copy { font-size: 0.6rem; padding: 5px 12px; }
+    
+    /* Rapatkan Layout */
+    .gx-3 { --bs-gutter-x: 0.5rem; }
+}
+
+/* Animasi (Pakai Class JS Lama) */
+.reveal-up, .reveal-left, .reveal-right { opacity: 0; transition: all 1.5s ease; }
+.reveal-up { transform: translateY(30px); }
+.reveal-left { transform: translateX(-30px); }
+.reveal-right { transform: translateX(30px); }
+.reveal-up.active, .reveal-left.active, .reveal-right.active { opacity: 1; transform: translate(0); }
+
+
+
+/* AKHIR DARI SECTION GIFT */
+        
+        
+        /* --- RSVP FORM --- */
+/* --- RSVP ROYAL SECTION --- */
+.rsvp-royal-section {
+    padding: 100px 0;
+    background: #050505;
+    position: relative;
+    overflow: hidden;
+    color: #FFF;
+}
+
+/* Judul */
+.cinematic-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.2rem; color: #D4AF37; margin-bottom: 10px;
+}
+.title-line-thread {
+    width: 60px; height: 1px; background: #D4AF37;
+    margin: 0 auto 30px; opacity: 0.6;
+}
+.section-quote {
+    font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
+    color: #aaa; max-width: 500px; margin: 0 auto;
+}
+
+/* --- FRAME WRAPPER (BINGKAI) --- */
+.rsvp-frame-wrapper {
+    position: relative;
+    padding: 3px; /* Jarak untuk border ganda */
+    margin-top: 40px;
+    background: linear-gradient(135deg, #D4AF37, #F2C94C, #D4AF37); /* Gradient Emas */
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.rsvp-form-content {
+    background: #0e0e0e; /* Background Form Hitam */
+    padding: 40px 30px;
+    border-radius: 10px; /* Sedikit lebih kecil dari wrapper */
+}
+
+
+/* --- 1. FLOATING LABEL INPUT (Modern UX) --- */
+.input-group-royal {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.field-royal {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem; color: #FFF;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.label-royal {
+    position: absolute;
+    left: 0; top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem; color: #888;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Magic: Saat input focus atau ada isinya, label naik ke atas */
+.field-royal:focus ~ .label-royal,
+.field-royal:not(:placeholder-shown) ~ .label-royal,
+.field-royal:valid ~ .label-royal /* Untuk Select yang sudah dipilih */
+{
+    top: -15px;
+    font-size: 0.75rem;
+    color: #D4AF37;
+    letter-spacing: 1px;
+}
+
+/* Garis Emas Animasi */
+.bar-gold {
+    position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+    background: #D4AF37; transition: width 0.4s ease;
+}
+.field-royal:focus ~ .bar-gold { width: 100%; }
+
+
+/* --- 2. CUSTOM RADIO (KEHADIRAN) --- */
+.attendance-wrapper { margin-top: 10px; margin-bottom: 10px; }
+.label-static {
+    display: block; font-family: 'Montserrat', sans-serif; font-size: 0.75rem;
+    color: #D4AF37; margin-bottom: 10px; letter-spacing: 1px;
+}
+
+.radio-group { display: flex; gap: 15px; }
+.radio-option { flex: 1; cursor: pointer; }
+
+/* Sembunyikan Radio Button Asli */
+.radio-option input { display: none; }
+
+/* Desain Kotak Pilihan */
+.radio-box {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #aaa; font-family: 'Montserrat', sans-serif; font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+/* Saat Dipilih (Checked) */
+.radio-option input:checked + .radio-box {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: #D4AF37;
+    color: #D4AF37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+
+/* --- 3. TEXTAREA & SELECT TWEAKS --- */
+.textarea-royal { resize: none; }
+/* Hapus panah default select biar rapi, ganti style custom kalau mau (opsional, ini basic clean) */
+select.field-royal { cursor: pointer; }
+select.field-royal option { background: #000; color: #FFF; padding: 10px; }
+
+
+/* --- 4. TOMBOL SUBMIT --- */
+.btn-submit-royal {
+    width: 100%; margin-top: 20px;
+    padding: 15px;
+    background: #D4AF37;
+    color: #000;
+    border: none; border-radius: 6px;
+    font-family: 'Cinzel', serif; font-weight: 700; font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 2px;
+}
+.btn-submit-royal:hover {
+    background: #F2C94C;
+    letter-spacing: 4px; /* Efek melebar saat hover */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* RESPONSIF */
+@media (max-width: 768px) {
+    .rsvp-form-content { padding: 30px 20px; }
+}
+
+/* ANIMASI */
+.reveal-up { opacity: 0; transition: all 1.5s ease; transform: translateY(30px); }
+.reveal-up.active { opacity: 1; transform: translate(0); }
+
+/* AKHIR DARI SECTION RSVP */
+/* --- 2026 TREND DIVIDER: THE GOLDEN AXIS --- */
+.axis-container {
+    position: relative;
+    width: 100%;
+    height: 100px; /* Tinggi proporsional */
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Jarak antara garis dan tengah */
+    z-index: 5;
+    overflow: hidden;
+}
+
+/* 1. GARIS EMAS PUDAR (Fading Lines) */
+.axis-line {
+    height: 1px;
+    width: 30%; /* Panjang garis */
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    opacity: 0.6;
+}
+
+/* Modifikasi arah gradasi agar pudar di ujung luar */
+.axis-line.left { background: linear-gradient(to left, #D4AF37, transparent); }
+.axis-line.right { background: linear-gradient(to right, #D4AF37, transparent); }
+
+/* 2. CENTERPIECE (Permata Kaca) */
+.axis-center {
+    position: relative;
+    width: 40px; height: 40px;
+    
+    /* Efek Kaca (Glassmorphism) */
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    
+    /* Putar 45 derajat jadi bentuk Diamond (Belah Ketupat) */
+    transform: rotate(45deg);
+    
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); /* Glow halus */
+    transition: all 0.5s ease;
+}
+
+/* Inti Emas di Tengah */
+.diamond-shape {
+    width: 12px; height: 12px;
+    background: #D4AF37;
+    box-shadow: 0 0 10px #D4AF37; /* Inti bersinar */
+}
+
+/* 3. ANIMASI (Halus & Elegan) */
+
+/* Garisnya memanjang-memendek dikit (Breathing) */
+.axis-container:hover .axis-line {
+    width: 35%;
+    opacity: 1;
+    transition: all 1s ease;
+}
+
+/* Permata berputar pelan saat standby */
+.axis-center {
+    animation: pulseGlow 4s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% { transform: rotate(45deg) scale(1); border-color: rgba(212, 175, 55, 0.4); }
+    50% { transform: rotate(45deg) scale(1.1); border-color: rgba(212, 175, 55, 0.8); box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); }
+    100% { transform: rotate(45deg) scale(1); border-color: rgba(212, 175, 55, 0.4); }
+}
+
+/* --- RESPONSIF HP --- */
+@media (max-width: 768px) {
+    .axis-container { height: 80px; gap: 15px; }
+    .axis-line { width: 25%; } /* Garis dipendekkan di HP */
+    .axis-center { width: 30px; height: 30px; }
+    .diamond-shape { width: 8px; height: 8px; }
+}
+
+/* AKHIR DARI SECTION DIVIDER */
+/* --- COUPLE CINEMATIC STYLE (FORCE SIDE-BY-SIDE) --- */
+.couple-cinematic {
+    padding: 80px 0;
+    background: #050505;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 1. TYPOGRAPHY */
+.cinematic-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Responsif */
+    color: #D4AF37; margin-bottom: 5px;
+}
+.title-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, #D4AF37, transparent);
+    margin: 10px auto 30px;
+}
+
+/* 2. FOTO (PILL SHAPE) */
+.cinematic-frame-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 10px; /* Padding dikurangi biar muat di HP */
+}
+
+.cinematic-frame {
+    /* UKURAN DEFAULT (DESKTOP) */
+    width: 180px; height: 280px; 
+    border-radius: 1000px;
+    overflow: hidden; position: relative; z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.cinematic-frame img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(100%); transform: scale(1.1);
+    transition: all 1.5s ease;
+}
+.cinematic-frame-wrapper:hover img { filter: grayscale(0%); transform: scale(1); }
+
+/* Floating Border */
+.floating-border {
+    position: absolute; inset: 0;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 1000px; z-index: 1;
+    transform: translate(6px, 6px);
+    transition: transform 0.8s ease;
+}
+
+/* 3. TEXT INFO */
+.info-box { padding: 0 5px; } /* Mepet dikit biar muat */
+
+.couple-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.2rem; 
+    color: #FFF; margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.couple-parents {
+    font-family: 'Montserrat', sans-serif;
+    color: #999; font-size: 0.9rem;
+    font-weight: 300; line-height: 1.4;
+}
+
+.social-line {
+    width: 40px; height: 1px; background: #D4AF37;
+    margin: 15px 0;
+}
+.align-left { margin-right: auto; margin-left: 0; }
+.align-right { margin-left: auto; margin-right: 0; }
+
+.social-link {
+    display: block; color: #D4AF37; text-decoration: none;
+    font-size: 0.85rem; letter-spacing: 1px;
+}
+.justify-end { text-align: right; }
+
+/* 4. SPACER */
+.couple-spacer { height: 60px; display: flex; align-items: center; justify-content: center; }
+.and-symbol { font-family: 'Great Vibes', cursive; font-size: 3rem; color: #333; }
+
+/* 5. ANIMASI (TETAP JALAN DI HP) */
+.reveal-text, .reveal-text-left, .reveal-text-right, 
+.reveal-img-left, .reveal-img-right {
+    opacity: 0;
+    transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-text.active { opacity: 1; transform: translateY(0); }
+/* Kiri ke Kanan */
+.reveal-text-left { transform: translateX(-30px); }
+.reveal-text-left.active { opacity: 1; transform: translateX(0); }
+/* Kanan ke Kiri */
+.reveal-text-right { transform: translateX(30px); }
+.reveal-text-right.active { opacity: 1; transform: translateX(0); }
+/* Foto */
+.reveal-img-left { transform: translateX(-30px); }
+.reveal-img-left.active { opacity: 1; transform: translateX(0); }
+.reveal-img-right { transform: translateX(30px); }
+.reveal-img-right.active { opacity: 1; transform: translateX(0); }
+
+
+/* --- KHUSUS HP (MAX-WIDTH 768px) --- */
+/* Ini yang memaksa layout tetap kiri-kanan tapi mengecil */
+@media (max-width: 768px) {
+    
+    /* Perkecil Gambar di HP */
+    .cinematic-frame {
+        width: 100px; /* Ukuran mungil */
+        height: 160px;
+    }
+    
+    /* Atur ulang floating border biar pas */
+    .floating-border { transform: translate(4px, 4px); }
+    
+    /* Perkecil Font Nama */
+    .couple-name {
+        font-size: 1.2rem; /* Nama dikecilkan */
+        margin-bottom: 5px;
+    }
+    
+    /* Perkecil Font Orang Tua */
+    .couple-parents {
+        font-size: 0.65rem; /* Font ortu sangat kecil tapi terbaca */
+        margin-bottom: 5px;
+    }
+    
+    /* Sosmed */
+    .social-link { font-size: 0.6rem; }
+    .social-line { width: 20px; margin: 8px 0; }
+    
+    /* Hapus Padding Container agar space maksimal */
+    .container { padding-left: 10px; padding-right: 10px; }
+    .gx-5 { --bs-gutter-x: 0.5rem; } /* Rapatkan jarak antar kolom */
+}
+
+/* AKHIR SECTION COUPLE /*
+/* SECTION COUNTDWON */
+/* --- COUNTDOWN LUXURY SECTION --- */
+.countdown-luxury-section {
+    padding: 100px 0;
+    background: #000; /* Hitam pekat */
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Glow di tengah background */
+.glow-bg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    filter: blur(50px);
+    z-index: 0;
+}
+
+/* WRAPPER AGAR HORIZONTAL */
+.timer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Agar aman di HP */
+}
+
+/* KOTAK KACA (TIMER BOX) */
+.timer-box {
+    position: relative;
+    width: 100px; height: 120px; /* Ukuran Kotak */
+    
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    
+    border-radius: 15px; /* Rounded Corners */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.timer-box:hover {
+    transform: translateY(-5px);
+    border-color: #D4AF37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* ANGKA */
+.time-num {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.5rem;
+    color: #D4AF37;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* LABEL (HARI/JAM) */
+.time-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.6);
+}
+
+/* SEPARATOR (TITIK DUA) */
+.timer-separator {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: #D4AF37;
+    padding-bottom: 10px;
+    animation: blink 1s infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* TOMBOL SAVE DATE */
+.btn-save-date {
+    display: inline-block;
+    padding: 12px 35px;
+    background: linear-gradient(45deg, #D4AF37, #F2C94C);
+    color: #000;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+}
+.btn-save-date:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+    color: #000;
+}
+
+/* --- RESPONSIF HP --- */
+@media (max-width: 768px) {
+    .timer-wrapper { gap: 10px; }
+    
+    .timer-box {
+        width: 70px; height: 90px; /* Perkecil kotak di HP */
+    }
+    
+    .time-num { font-size: 1.8rem; }
+    .time-label { font-size: 0.55rem; letter-spacing: 1px; }
+    
+    /* Sembunyikan titik dua di HP biar muat rapi */
+    .timer-separator { display: none; }
+}
+
+/* AKHIR SECTION COUNTDOWN */
+/*  SECTION EVENT */
+/* --- EVENT ICON STYLE (CSS ONLY) --- */
+.event-icon-style {
+    padding: 80px 0;
+    background: #050505;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Judul */
+.cinematic-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2rem; color: #D4AF37; margin-bottom: 5px;
+}
+.title-line-thread {
+    width: 50px; height: 1px; background: #D4AF37;
+    margin: 0 auto 40px; opacity: 0.6;
+}
+
+/* --- PILL SHAPE (PENGGANTI GAMBAR) --- */
+.pill-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 8px; /* Ruang untuk border melayang */
+}
+
+/* Kotak Utama (Background Hitam Kaca) */
+.pill-box {
+    width: 120px; height: 180px; /* Ukuran Compact */
+    border-radius: 100px; /* Membuat bentuk Kapsul Sempurna */
+    
+    background: linear-gradient(145deg, #111, #0a0a0a); /* Gradasi Hitam Elegan */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Border tipis banget */
+    
+    display: flex; justify-content: center; align-items: center;
+    position: relative; z-index: 2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Ikon di dalam Pill */
+.event-icon-big {
+    font-size: 2.5rem;
+    color: #D4AF37;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4)); /* Glow Emas */
+    transition: transform 0.5s ease;
+}
+
+/* Border Melayang (CSS Border Only) */
+.pill-border-floating {
+    position: absolute; inset: 0;
+    border: 1px solid rgba(212, 175, 55, 0.4); /* Border Emas Tipis */
+    border-radius: 100px; /* Kapsul */
+    z-index: 1;
+    transform: translate(6px, 6px); /* Geser sedikit */
+    transition: transform 0.5s ease;
+}
+
+/* Efek Hover */
+.pill-wrapper:hover .pill-box { transform: translateY(-3px); border-color: #D4AF37; }
+.pill-wrapper:hover .event-icon-big { transform: scale(1.1); }
+.pill-wrapper:hover .pill-border-floating { transform: translate(3px, 3px); }
+
+
+/* --- TEKS INFO (Side Layout) --- */
+.event-info-compact { padding: 0 5px; }
+
+.event-tag {
+    display: block; font-family: 'Montserrat', sans-serif;
+    font-size: 0.5rem; letter-spacing: 2px; color: #666;
+    margin-bottom: 5px;
+}
+
+.event-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.5rem; color: #D4AF37; margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+/* Waktu */
+.time-group p { margin: 0; font-family: 'Montserrat', sans-serif; }
+.time-group .date { font-size: 0.75rem; color: #FFF; font-weight: 600; }
+.time-group .clock { font-size: 0.7rem; color: #aaa; margin-top: 2px; }
+
+/* Garis Emas Kecil */
+.line-gold {
+    width: 25px; height: 1px; background: #D4AF37;
+    margin: 12px 0; opacity: 0.5;
+}
+.align-left { margin-right: auto; margin-left: 0; }
+.align-right { margin-left: auto; margin-right: 0; }
+
+/* Lokasi */
+.loc-group strong {
+    display: block; font-family: 'Cinzel', serif;
+    font-size: 0.85rem; color: #FFF; margin-bottom: 2px;
+}
+.loc-group p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; color: #888; margin-bottom: 15px;
+}
+
+/* Tombol Teks */
+.btn-event-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; color: #D4AF37; text-decoration: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease; padding-bottom: 2px;
+}
+.btn-event-text:hover { color: #FFF; border-color: #FFF; }
+
+
+/* --- RESPONSIF HP --- */
+@media (max-width: 768px) {
+    /* Perkecil Pill di HP */
+    .pill-box { width: 90px; height: 140px; }
+    .event-icon-big { font-size: 1.8rem; }
+    .pill-border-floating { transform: translate(4px, 4px); }
+
+    /* Sesuaikan Font */
+    .event-name { font-size: 1.2rem; }
+    .time-group .date { font-size: 0.65rem; }
+    .loc-group strong { font-size: 0.75rem; }
+    
+    /* Rapatkan Kolom */
+    .gx-3 { --bs-gutter-x: 0.5rem; }
+}
+
+/* ANIMASI (Pastikan JS Update) */
+.reveal-up, .reveal-left, .reveal-right { opacity: 0; transition: all 1.5s ease; }
+.reveal-up { transform: translateY(50px); }
+.reveal-left { transform: translateX(-30px); }
+.reveal-right { transform: translateX(30px); }
+.reveal-up.active, .reveal-left.active, .reveal-right.active { opacity: 1; transform: translate(0); }
+
+/* --- TYPOGRAPHY FORMAL TAMBAHAN --- */
+
+/* Kutipan Ayat di Header */
+.section-quote {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #ccc;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+.quote-source {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: #D4AF37; /* Warna Emas */
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Deskripsi Pendek di Acara (Insya Allah...) */
+.event-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    color: #aaa;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+/* Penutup di Bawah Section */
+.event-closing {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: #888;
+    max-width: 500px;
+    margin: 0 auto;
+    letter-spacing: 1px;
+}
+
+/* --- RESPONSIF HP --- */
+@media (max-width: 768px) {
+    .section-quote { font-size: 0.7rem; }
+    
+    /* Sembunyikan deskripsi panjang di HP jika layar terlalu sempit, 
+       atau kecilkan fontnya agar layout tidak pecah */
+    .event-desc { 
+        font-size: 0.6rem; 
+        margin-bottom: 5px;
+    }
+    
+    .event-closing {
+        font-size: 0.65rem;
+        padding: 0 20px;
+    }
+}
+
+/* AKHIR SECTION EVENT */
+
+/* SECTION LOVE STORY */
+/* --- STORY CINEMATIC TEXT SECTION --- */
+.story-cinematic-text {
+    padding: 100px 0;
+    background: #050505; /* Hitam Pekat */
+    position: relative;
+    overflow: hidden;
+    color: #FFF;
+}
+
+/* Judul (Konsisten) */
+.cinematic-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.2rem; color: #D4AF37; margin-bottom: 10px;
+}
+.title-line-thread {
+    width: 60px; height: 1px; background: #D4AF37;
+    margin: 0 auto 30px; opacity: 0.6;
+}
+.section-quote {
+    font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+    color: #888; font-style: italic; letter-spacing: 1px;
+}
+
+/* --- WRAPPER UTAMA --- */
+.script-wrapper {
+    position: relative;
+    max-width: 700px; /* Lebar konten dibatasi agar enak dibaca */
+    margin: 50px auto 0;
+    padding-bottom: 50px;
+}
+
+/* GARIS TENGAH (The Golden Thread) */
+.center-thread {
+    position: absolute;
+    top: 0; bottom: 0; left: 50%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #D4AF37, transparent);
+    transform: translateX(-50%);
+    opacity: 0.4;
+    z-index: 1;
+}
+
+/* --- NODE (PER CHAPTER) --- */
+.script-node {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 80px; /* Jarak antar chapter */
+}
+
+/* KOTAK IKON DIAMOND */
+.node-icon-box {
+    display: flex; justify-content: center; align-items: center;
+    margin-bottom: 25px;
+    position: relative;
+    background: #050505; /* Menutup garis belakang */
+    padding: 10px 0;
+}
+
+.diamond-shape {
+    width: 50px; height: 50px;
+    border: 1px solid #D4AF37;
+    transform: rotate(45deg); /* Memutar kotak jadi Diamond */
+    display: flex; justify-content: center; align-items: center;
+    background: #050505;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+    transition: all 0.5s ease;
+}
+
+/* Ikon di dalam diamond (Diputar balik agar lurus) */
+.diamond-shape i {
+    transform: rotate(-45deg); 
+    font-size: 1.2rem;
+    color: #D4AF37;
+}
+
+/* Hover Effect */
+.script-node:hover .diamond-shape {
+    background: #D4AF37;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+    transform: rotate(225deg); /* Putar saat hover */
+}
+.script-node:hover .diamond-shape i {
+    color: #000;
+    transform: rotate(-225deg); /* Jaga ikon tetap lurus */
+}
+
+/* Highlight Gold (Untuk Hari H) */
+.diamond-shape.highlight-gold {
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+}
+
+
+/* --- KONTEN TEXT --- */
+.node-content {
+    background: #050505; /* Background hitam biar teks jelas */
+    display: inline-block; /* Agar background membungkus teks */
+    padding: 0 20px; /* Spasi kiri kanan dari garis */
+}
+
+.chapter-year {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; letter-spacing: 4px; color: #888;
+    margin-bottom: 10px; font-weight: 600;
+}
+
+.chapter-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.8rem; color: #FFF; margin-bottom: 15px;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+}
+
+.chapter-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem; color: #aaa; line-height: 1.8;
+    max-width: 500px; margin: 0 auto;
+}
+
+/* --- ORNAMEN AKHIR (Infinity) --- */
+.end-ornament {
+    text-align: center; position: relative; z-index: 2;
+    background: #050505; padding: 10px; display: inline-block;
+    left: 50%; transform: translateX(-50%);
+}
+.end-ornament i {
+    font-size: 1.5rem; color: #D4AF37; opacity: 0.5;
+}
+
+
+/* --- RESPONSIF HP --- */
+@media (max-width: 768px) {
+    .script-wrapper { margin-top: 30px; }
+    
+    .diamond-shape { width: 40px; height: 40px; }
+    .diamond-shape i { font-size: 1rem; }
+    
+    .chapter-title { font-size: 1.5rem; }
+    .chapter-desc { font-size: 0.8rem; line-height: 1.6; }
+    
+    .script-node { margin-bottom: 60px; }
+}
+
+/* ANIMASI (Pastikan JS Update) */
+.reveal-up { opacity: 0; transition: all 1.5s ease; transform: translateY(50px); }
+.reveal-up.active { opacity: 1; transform: translate(0); }
+
+/* --- STAGGER DELAY (Agar muncul bergantian) --- */
+/* Ini trik agar node 1, 2, 3 muncul berurutan seperti domino */
+.script-node:nth-of-type(1) { transition-delay: 0.1s; }
+.script-node:nth-of-type(2) { transition-delay: 0.3s; }
+.script-node:nth-of-type(3) { transition-delay: 0.5s; }
+.script-node:nth-of-type(4) { transition-delay: 0.7s; }
+.end-ornament { transition-delay: 0.9s; }
+/* AKHIR SECTION LOVE STORY /*
+/* --- FOOTER LUXURY --- */
+.footer-luxury {
+    padding: 80px 0 40px; /* Padding atas lebih besar */
+    background: #000; /* Hitam total sebagai penutup */
+    color: #FFF;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Garis pemisah sangat tipis */
+}
+
+/* Ornamen Infinity */
+.footer-ornament {
+    font-size: 1.5rem; color: #D4AF37; opacity: 0.5;
+    margin-bottom: 20px;
+}
+
+/* Nama Pasangan Besar */
+.footer-couple {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.5rem; color: #D4AF37;
+    margin-bottom: 20px;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+}
+.footer-couple .amp {
+    font-family: 'Montserrat', sans-serif; font-size: 1.5rem;
+    color: #888; margin: 0 10px; font-weight: 300;
+}
+
+/* Ucapan Terima Kasih */
+.footer-thankyou {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem; color: #aaa; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 50px;
+}
+
+/* Garis Pemisah Credit */
+.footer-line {
+    width: 100%; max-width: 200px; height: 1px;
+    background: linear-gradient(90deg, transparent, #333, transparent);
+    margin: 0 auto 30px;
+}
+
+/* Copyright & Credit */
+.footer-copyright {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; color: #666;
+}
+
+/* Developer Link (XzorStudio) */
+.developer-credit { margin-top: 5px; }
+
+.dev-link {
+    color: #D4AF37; text-decoration: none;
+    font-weight: 600; letter-spacing: 1px;
+    transition: all 0.3s ease; border-bottom: 1px solid transparent;
+}
+
+.dev-link:hover {
+    color: #FFF; border-bottom-color: #D4AF37;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Animasi Jantung Berdetak */
+.pulse-icon {
+    display: inline-block; animation: heartBeat 1.5s infinite;
+    font-size: 0.8rem; margin: 0 2px;
+}
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* RESPONSIF HP */
+@media (max-width: 768px) {
+    .footer-couple { font-size: 1.8rem; }
+    .footer-thankyou { font-size: 0.7rem; letter-spacing: 1px; }
+    .footer-copyright { font-size: 0.6rem; }
+}
+
+/* ANIMASI (Pakai Class JS Lama) */
+.reveal-up { opacity: 0; transition: all 1.5s ease; transform: translateY(30px); }
+.reveal-up.active { opacity: 1; transform: translate(0); }
+
+    </style>
+</head>
+<body>
+
+<div id="preloader">
+    <div class="ambiance-light"></div>
+
+    <div class="curtain curtain-top"></div>
+    <div class="curtain curtain-bottom"></div>
+    
+    <div class="gold-dust">
+        <div class="speck s1"></div><div class="speck s2"></div><div class="speck s3"></div><div class="speck s4"></div>
+    </div>
+
+    <div class="loader-content">
+        <div class="svg-wrapper">
+            <svg width="0" height="0">
+                <defs>
+                    <linearGradient id="richGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#BF953F" />
+                        <stop offset="25%" style="stop-color:#FCF6BA" /> <stop offset="50%" style="stop-color:#B38728" />
+                        <stop offset="75%" style="stop-color:#FBF5B7" />
+                        <stop offset="100%" style="stop-color:#AA771C" />
+                    </linearGradient>
+                </defs>
+            </svg>
+
+            <svg viewBox="0 0 400 120" class="text-svg-layer">
+                <filter id="glow-shadow">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+                    <feOffset in="blur" dx="0" dy="4" result="offsetBlur"/>
+                    <feFlood flood-color="rgba(0,0,0,0.8)" flood-opacity="1" result="offsetColor"/>
+                    <feComposite in="offsetColor" in2="offsetBlur" operator="in" result="offsetBlur"/>
+                    <feMerge>
+                        <feMergeNode in="offsetBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+                <text x="50%" y="50%" dy=".35em" text-anchor="middle" class="handwriting-text" filter="url(#glow-shadow)">
+                    S & W
+                </text>
+            </svg>
+        </div>
+        
+        <p class="cinematic-caption">The Beginning of Forever</p>
+        
+        <div class="progress-line-minimal">
+            <div class="progress-fill-glow" id="loaderBar"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="cover">
+    <div class="flash-effect"></div>
+
+    <div class="gate-panel gate-left">
+        <div class="gate-inner">
+            <div class="gate-bg"></div>
+            <div class="gate-overlay"></div>
+        </div>
+    </div>
+
+    <div class="gate-panel gate-right">
+        <div class="gate-inner">
+            <div class="gate-bg"></div>
+            <div class="gate-overlay"></div>
+        </div>
+    </div>
+
+    <div class="cover-content-box">
+        <div class="title-group">
+            <div class="monogram-crest">
+                <div class="crest-circle"></div><div class="crest-initials">S & W</div>
+            </div>
+            <p class="wedding-subtitle">THE WEDDING CELEBRATION</p>
+            <h1 class="couple-names-cover">
+                Sepri <span class="ampersand-thin">&</span> Winy
+            </h1>
+        </div>
+
+        <div class="bottom-group">
+            <div class="guest-container">
+                <p class="to-label">Special Invitation For</p>
+                <h3 class="guest-name-display" id="guestNameDisplay">Tamu Undangan</h3>
+            </div>
+            
+            <button id="openBtn" class="minimal-btn">
+                <span class="btn-text">BUKA UNDANGAN</span>
+                <div class="btn-line"></div>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+    <audio id="bgm" loop>
+        <source src="public/music/song.mp3" type="audio/mp3">
+    </audio>
+
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container text-center position-relative z-2">
+        
+        <p class="hero-subtitle">The Wedding of</p>
+
+        <div class="couple-name-box my-4">
+            <h1 class="hero-title name-left">SEPRI</h1>
+            
+            <div class="ampersand-box">
+                <span class="ampersand-icon">&</span>
+            </div>
+            
+            <h1 class="hero-title name-right">WINY</h1>
+        </div>
+
+        <p class="hero-date">
+            26 . 09 . 2026
+        </p>
+
+        <div class="scroll-hint">
+            <span>Scroll Down</span>
+            <i class="fa-solid fa-chevron-down mt-2"></i>
+        </div>
+    </div>
+</section>
+
+<div class="axis-container">
+    <div class="axis-line left"></div>
+    
+    <div class="axis-center anim-pulse">
+        <div class="diamond-shape"></div>
+    </div>
+    
+    <div class="axis-line right"></div>
+</div>
+
+<section id="quran" class="divine-section">
+    <div class="fireflies">
+        <div class="firefly"></div><div class="firefly"></div><div class="firefly"></div>
+        <div class="firefly"></div><div class="firefly"></div><div class="firefly"></div>
+        <div class="firefly"></div><div class="firefly"></div><div class="firefly"></div>
+    </div>
+
+    <div class="container position-relative z-2">
+
+        <div class="divine-card anim-up">
+
+            <div class="card-content">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Basmala.svg" class="bismillah-gold" alt="Bismillah">
+
+                <h3 class="ayat-shimmer" dir="rtl">
+                    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+                </h3>
+
+                <p class="translation-elegant">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya."
+                </p>
+
+                <div class="surah-pill">
+                    <span>QS. Ar-Rum : 21</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<div class="axis-container">
+    <div class="axis-line left"></div>
+    
+    <div class="axis-center anim-pulse">
+        <div class="diamond-shape"></div>
+    </div>
+    
+    <div class="axis-line right"></div>
+</div>
+
+<section id="couple" class="couple-cinematic">
+    <div class="container">
+        
+        <div class="text-center mb-4 reveal-text">
+            <h2 class="cinematic-title">The Bride & Groom</h2>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="row align-items-center justify-content-center gx-2 gy-0 couple-row mb-4">
+            
+            <div class="col-6 text-end">
+                <div class="cinematic-frame-wrapper reveal-img-left">
+                    <div class="cinematic-frame">
+                        <img src="public/images/groom.jpeg" alt="Romeo">
+                    </div>
+                    <div class="floating-border"></div>
+                </div>
+            </div>
+
+            <div class="col-6 text-start">
+                <div class="info-box reveal-text-right">
+                    <h2 class="couple-name">Pratu Sepri Ardian</h2>
+                    <p class="couple-parents">Putra Pertama dari<br>Bpk. Mawardi & Ibu Hafdanis</p>
+                    <div class="social-line align-left"></div>
+                    <a href="https://www.instagram.com/sepriardian_/" class="social-link"><i class="fa-brands fa-instagram"></i> @sepriardian_</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="couple-spacer">
+            <span class="and-symbol">&</span>
+        </div>
+
+        <div class="row align-items-center justify-content-center gx-2 gy-0 couple-row mt-4">
+            
+            <div class="col-6 text-end">
+                <div class="info-box reveal-text-left">
+                    <h2 class="couple-name">Wahdiny Prima, S.Si</h2>
+                    <p class="couple-parents">Putri dari<br>Bpk. Warman,S.Pd.,M.M.Pd & Ibu Suzana Jelita,S.Pd</p>
+                    <div class="social-line align-right"></div>
+                    <a href="https://www.instagram.com/whdny24/" class="social-link justify-end"><i class="fa-brands fa-instagram"></i> @whdny24</a>
+                </div>
+            </div>
+
+            <div class="col-6 text-start">
+                <div class="cinematic-frame-wrapper reveal-img-right">
+                    <div class="cinematic-frame">
+                        <img src="public/images/cewe.jpg" alt="Juliet">
+                    </div>
+                    <div class="floating-border"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="axis-container">
+    <div class="axis-line left"></div>
+    
+    <div class="axis-center anim-pulse">
+        <div class="diamond-shape"></div>
+    </div>
+    
+    <div class="axis-line right"></div>
+</div>
+
+
+<section id="countdown" class="countdown-luxury-section">
+    <div class="glow-bg"></div>
+
+    <div class="container position-relative z-2 text-center">
+        
+        <div class="mb-5 reveal-up">
+            <h2 class="cinematic-title">Counting The Moment</h2>
+            <p class="section-subtitle">Menuju hari bahagia kami</p>
+        </div>
+        
+        <div class="timer-wrapper reveal-up">
+            
+            <div class="timer-box">
+                <span class="time-num" id="days">00</span>
+                <span class="time-label">HARI</span>
+            </div>
+
+            <div class="timer-separator">:</div>
+
+            <div class="timer-box">
+                <span class="time-num" id="hours">00</span>
+                <span class="time-label">JAM</span>
+            </div>
+
+            <div class="timer-separator">:</div>
+
+            <div class="timer-box">
+                <span class="time-num" id="minutes">00</span>
+                <span class="time-label">MENIT</span>
+            </div>
+
+            <div class="timer-separator">:</div>
+
+            <div class="timer-box">
+                <span class="time-num" id="seconds">00</span>
+                <span class="time-label">DETIK</span>
+            </div>
+
+        </div>
+
+        <div class="mt-5 reveal-up">
+            <!-- <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Sepri+%26+Winy&dates=20260220T080000/20260220T130000&details=Kami+mengundang+Anda+untuk+hadir+di+pernikahan+kami.&location=Jakarta&sf=true&output=xml" target="_blank" class="btn-save-date"> -->
+                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Sepri+%26+Winy&dates=20260926T100000/20260926T235900&details=Kami+mengundang+Anda+untuk+hadir+di+pernikahan+kami.&location=Koto+Hiling&sf=true&output=xml" target="_blank" class="btn-save-date">
+                <i class="fa-regular fa-calendar-check me-2"></i> Save The Date
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<div class="axis-container">
+    <div class="axis-line left"></div>
+    
+    <div class="axis-center anim-pulse">
+        <div class="diamond-shape"></div>
+    </div>
+    
+    <div class="axis-line right"></div>
+</div>
+
+
+<section id="event" class="event-icon-style">
+    <div class="container">
+        
+        <div class="text-center mb-5 reveal-up">
+            <h2 class="cinematic-title">Rangkaian Acara</h2>
+            <div class="title-line-thread"></div>
+            <p class="section-quote">
+                Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada acara pernikahan kami:
+            </p>
+        </div>
+
+        <div class="row align-items-center justify-content-center gx-3 gy-4 mb-5">
+            
+            <div class="col-6 text-end">
+                <div class="pill-wrapper reveal-left">
+                    <div class="pill-box">
+                        <i class="fa-solid fa-ring event-icon-big"></i>
+                    </div>
+                    <div class="pill-border-floating"></div>
+                </div>
+            </div>
+
+            <div class="col-6 text-start">
+                <div class="event-info-compact reveal-right">
+                    <!-- <span class="event-tag">ACARA INTI</span> -->
+                    <h3 class="event-name">Akad Nikah</h3>
+                    
+                    <p class="event-desc">
+                        Pelaksanaan Ijab & Qabul
+                    </p>
+                    
+                    <div class="time-group">
+                        <p class="date">Jumat, 18 September 2026</p>
+                        <p class="clock"><i class="fa-regular fa-clock"></i> 14:00 WIB - Selesai</p>
+                    </div>
+
+                    <div class="line-gold align-left"></div>
+
+                    <div class="loc-group">
+                        <strong>Masjid Nurul Iman</strong>
+                        <p>Ketinggian Sarilamak, Kec. Harau, Kab. Lima Puluh Kota</p>
+                    </div>
+
+                    <a href="https://maps.app.goo.gl/A9pcrg2SnJGpx8my5" target="_blank" class="btn-event-text">
+                        Lihat Lokasi
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row align-items-center justify-content-center gx-3 gy-4">
+            
+            <div class="col-6 text-end">
+                <div class="event-info-compact reveal-left">
+                    <!-- <span class="event-tag">RAMAH TAMAH</span> -->
+                    <h3 class="event-name">Resepsi</h3>
+                    
+                    <p class="event-desc">
+                        Syukuran & Perayaan Cinta
+                    </p>
+                    
+                    <div class="time-group">
+                        <p class="date">Sabtu, 26 September 2026</p>
+                        <p class="clock"><i class="fa-regular fa-clock"></i> 10:00 WIB - Selesai</p>
+                    </div>
+
+                    <div class="line-gold align-right"></div>
+
+                    <div class="loc-group">
+                        <strong>Jorong Koto Hiling</strong>
+                        <p>Sungai Tarab, Kec. Sungai Tarab, Kab. Tanah Datar</p>
+                    </div>
+
+                    <a href="https://maps.app.goo.gl/TS83xxDY7nw85gxH8" target="_blank" class="btn-event-text">
+                        Lihat Lokasi
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 text-start">
+                <div class="pill-wrapper reveal-right">
+                    <div class="pill-box">
+                        <i class="fa-solid fa-champagne-glasses event-icon-big"></i>
+                    </div>
+                    <div class="pill-border-floating"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5 reveal-up">
+            <p class="event-closing">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia ini.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<div class="axis-container">
+    <div class="axis-line left"></div>
+    
+    <div class="axis-center anim-pulse">
+        <div class="diamond-shape"></div>
+    </div>
+    
+    <div class="axis-line right"></div>
+</div>
+
+
+
+<section id="gallery" class="gallery-luxury-section">
+    <div class="container-fluid p-0">
+        
+        <div class="text-center mb-5 reveal-up">
+            <h2 class="cinematic-title">Our Moments</h2>
+            <div class="title-line-thread"></div> </div>
+
+        <div class="gallery-wrapper reveal-up">
+            <div class="gallery-track">
+                <div class="gallery-item"><img src="public/images/1.jpg" loading="lazy" alt="Gallery"></div>
+                <div class="gallery-item"><img src="public/images/2.jpg" loading="lazy" alt="Gallery"></div>
+                <div class="gallery-item"><img src="public/images/3.jpg" loading="lazy" alt="Gallery"></div>
+                <div class="gallery-item"><img src="public/images/4.jpg" loading="lazy" alt="Gallery"></div>
+                <div class="gallery-item"><img src="public/images/2.jpg" loading="lazy" alt="Gallery"></div>
+                
+                <div class="gallery-item"><img src="public/images/3.jpg" loading="lazy" alt="Gallery"></div>
+                <div class="gallery-item"><img src="public/images/1.jpg" loading="lazy" alt="Gallery"></div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="axis-container">
+    <div class="axis-line left"></div>
+    
+    <div class="axis-center anim-pulse">
+        <div class="diamond-shape"></div>
+    </div>
+    
+    <div class="axis-line right"></div>
+</div>
+
+<section id="gift" class="gift-premium-section">
+    <div class="container">
+        
+        <div class="text-center mb-5 reveal-up">
+            <h2 class="cinematic-title">Wedding Gift</h2>
+            <div class="title-line-thread"></div>
+            <p class="section-quote">
+                Doa restu Anda adalah hadiah terbaik. Namun jika Anda ingin memberi tanda kasih, dapat melalui:
+            </p>
+        </div>
+        
+        <div class="row align-items-center justify-content-center gx-3 gy-4 mb-5">
+            
+            <div class="col-6 text-end">
+                <div class="card-float-wrapper reveal-left">
+                    <div class="premium-card bca-style">
+                        <div class="card-shine"></div>
+                        
+                        <div class="card-chip-gold"></div>
+                        <div class="card-logo">MANDIRI</div>
+                        <div class="card-number">1080031224430</div>
+                        <div class="card-holder">SEPRI ARDIAN</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 text-start">
+                <div class="gift-info reveal-right">
+                    <h3 class="bank-title">Bank MANDIRI</h3>
+                    <p class="acc-name">a.n Sepri Ardian</p>
+                    
+                    <button class="btn-gold-copy" onclick="copyText(this, '1080031224430')">
+                        <i class="fa-regular fa-copy"></i> Salin
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row align-items-center justify-content-center gx-3 gy-4">
+            
+            <div class="col-6 text-end">
+                <div class="gift-info reveal-left">
+                    <h3 class="bank-title">BRI</h3>
+                    <p class="acc-name">a.n Wahdiny Prima</p>
+                    
+                    <button class="btn-gold-copy" onclick="copyText(this, '025601024622534')">
+                        <i class="fa-regular fa-copy"></i> Salin
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-6 text-start">
+                <div class="card-float-wrapper reveal-right">
+                    <div class="premium-card dana-style">
+                        <div class="card-shine"></div>
+                        
+                        <div class="card-chip-gold"></div>
+                        <div class="card-logo">BRI</div>
+                        <div class="card-number">025601024622534</div>
+                        <div class="card-holder">WAHDINY PRIMA</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<div class="axis-container">
+    <div class="axis-line left"></div>
+    
+    <div class="axis-center anim-pulse">
+        <div class="diamond-shape"></div>
+    </div>
+    
+    <div class="axis-line right"></div>
+</div>
+
+    <footer class="footer-luxury">
+    <div class="container text-center">
+        
+        <div class="footer-ornament reveal-up">
+            <i class="fa-solid fa-infinity"></i>
+        </div>
+
+        <div class="footer-couple reveal-up">
+            <span>Sepri</span>
+            <span class="amp">&</span>
+            <span>Winy</span>
+        </div>
+
+        <p class="footer-thankyou reveal-up">
+            Terima kasih atas doa dan restu Anda.
+        </p>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-copyright reveal-up">
+            <p class="mb-1">&copy; 2026 The Wedding. All Rights Reserved.</p>
+            <p class="developer-credit">
+                Handcrafted with <i class="fa-solid fa-heart text-danger pulse-icon"></i> by 
+                <a href="https://www.instagram.com/rhmt_ardian25/" target="_blank" class="dev-link">
+                    rhmt_ardian25
+                </a>
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // ===============================================
+    // 1. CONFIG & GLOBAL VARIABLES
+    // ===============================================
+    const CONFIG = {
+        weddingDate: "2026-02-20T08:00:00", 
+        whatsappNum: "628123456789"
+    };
+
+    const bgm = document.getElementById('bgm');
+    const musicIcon = document.querySelector('#musicToggle i');
+    let isPlaying = false;
+
+    // ===============================================
+    // 2. HELPER FUNCTIONS
+    // ===============================================
+    function splitTextToSpans(selector) {
+        const elements = document.querySelectorAll(selector);
+        if (!elements.length) return;
+        elements.forEach(el => {
+            if (!el.querySelector('.char-span')) {
+                const text = el.innerText;
+                el.innerHTML = text.split("").map(char => `<span class="char-span">${char}</span>`).join("");
+            }
+        });
+    }
+
+    window.copyText = function(btn, text) {
+        navigator.clipboard.writeText(text).then(() => {
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check me-2"></i>Tersalin';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    };
+
+    // ===============================================
+    // 3. ANIMASI HERO SECTION (GSAP)
+    // ===============================================
+    function playHeroAnimation() {
+        if (typeof gsap === "undefined") {
+            console.warn("⚠️ GSAP belum terload.");
+            return;
+        }
+        gsap.registerPlugin(ScrollTrigger);
+        splitTextToSpans(".hero-title");
+        const tl = gsap.timeline();
+
+        if(document.querySelector('.hero-subtitle')) tl.from(".hero-subtitle", { y: -50, autoAlpha: 0, duration: 1.5, ease: "power2.out" });
+        if(document.querySelector('.name-left')) tl.from(".name-left .char-span", { y: 100, autoAlpha: 0, filter: "blur(10px)", duration: 2, ease: "power4.out", stagger: 0.1 }, "-=1.0");
+        if(document.querySelector('.ampersand-icon')) tl.from(".ampersand-icon", { scale: 0, rotation: 180, autoAlpha: 0, duration: 1.5, ease: "back.out(1.7)" }, "-=1.5");
+        if(document.querySelector('.name-right')) tl.from(".name-right .char-span", { y: 100, autoAlpha: 0, filter: "blur(10px)", duration: 2, ease: "power4.out", stagger: 0.1 }, "-=1.8");
+        if(document.querySelector('.hero-date')) tl.from([".hero-date", ".scroll-hint"], { y: 30, autoAlpha: 0, duration: 1, stagger: 0.3 }, "-=1.0");
+        if(document.querySelector('.hero-bg')) {
+            gsap.to(".hero-bg", {
+                yPercent: 20, ease: "none",
+                scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: true }
+            });
+        }
+    }
+
+    // ===============================================
+    // 4. ANIMASI SCROLL REVEAL (ALL SECTIONS) - PENTING!
+    // ===============================================
+    // List ini HARUS mencakup SEMUA class animasi yang dipakai di HTML
+    const revealTargets = document.querySelectorAll('.reveal-text, .reveal-text-left, .reveal-text-right, .reveal-img-left, .reveal-img-right, .reveal-up, .reveal-left, .reveal-right, .anim-up');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active'); // Trigger CSS Opacity 1
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+
+
+    // ===============================================
+    // 5. LOGIC COVER & UTILS
+    // ===============================================
+    const openBtn = document.getElementById('openBtn');
+    const cover = document.getElementById('cover');
+
+    if (openBtn) {
+        openBtn.addEventListener('click', () => {
+            openBtn.classList.add('clicked');
+            setTimeout(() => { if(cover) cover.classList.add('flashing'); }, 200);
+            setTimeout(() => {
+                const flash = cover.querySelector('.flash-effect');
+                if(flash) flash.style.opacity = '0';
+                if(cover) cover.classList.add('hide');
+                const nav = document.getElementById('bottomNav');
+                if(nav) nav.classList.add('visible');
+                document.body.style.overflowY = 'auto';
+                if(bgm) {
+                    bgm.play().then(() => {
+                        isPlaying = true;
+                        if(musicIcon) musicIcon.className = "fa-solid fa-compact-disc fa-spin";
+                    }).catch(() => {});
+                }
+                setTimeout(() => { playHeroAnimation(); }, 500); 
+            }, 600); 
+        });
+    } else {
+        playHeroAnimation();
+    }
+
+    const toggleBtn = document.getElementById('musicToggle');
+    if(toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            if(isPlaying) { bgm.pause(); musicIcon.className = "fa-solid fa-music"; }
+            else { bgm.play(); musicIcon.className = "fa-solid fa-compact-disc fa-spin"; }
+            isPlaying = !isPlaying;
+        });
+    }
+/* SECTIOON RSVP */
+// --- UPDATE BAGIAN INI DI FILE JS ANDA ---
+
+// --- UPDATE LOGIC RSVP DI JS ---
+
+const rsvpForm = document.getElementById('rsvpForm');
+if(rsvpForm) {
+    rsvpForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('guestName').value;
+        const count = document.getElementById('guestCount').value;
+        const msg = document.getElementById('guestMessage').value;
+
+        // CARA AMBIL NILAI RADIO BUTTON
+        // Mencari input radio dengan name="attendance" yang di-check
+        const statusEl = document.querySelector('input[name="attendance"]:checked');
+        const status = statusEl ? statusEl.value : "Belum Konfirmasi";
+
+        // FORMAT PESAN WHATSAPP
+        const whatsappMessage = 
+`*⚜️ WEDDING RSVP ⚜️*
+Kepada Sepri & Winy,
+
+Saya yang bertanda tangan di bawah ini:
+
+👤 *Nama:* ${name}
+💌 *Status:* ${status}
+👥 *Jumlah:* ${count} Orang
+
+✍️ *Ucapan & Doa:*
+"${msg}"
+
+Terima kasih.`;
+
+        const whatsappNum = "628123456789"; 
+        const url = `https://wa.me/${whatsappNum}?text=${encodeURIComponent(whatsappMessage)}`;
+        
+        window.open(url, '_blank');
+    });
+}
+
+/* AKHIR DARI RSVP */
+    function startUtils() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const guest = urlParams.get('to') || "Tamu Undangan";
+        const guestDisplay = document.getElementById('guestNameDisplay');
+        const guestInput = document.getElementById('guestName');
+        if(guestDisplay) guestDisplay.innerText = decodeURIComponent(guest);
+        if(guestInput) guestInput.value = decodeURIComponent(guest);
+
+        let progress = 0;
+        const bar = document.getElementById('loaderBar');
+        if(bar) {
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if(progress > 100) progress = 100;
+                bar.style.width = progress + '%';
+                if(progress === 100) { clearInterval(interval); setTimeout(() => document.body.classList.add('loaded'), 500); }
+            }, 100);
+        } else { document.body.classList.add('loaded'); }
+
+        const daysEl = document.getElementById('days');
+        if(daysEl) {
+            const target = new Date(CONFIG.weddingDate).getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+                if(diff < 0) return;
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                daysEl.innerText = d < 10 ? '0'+d : d;
+                document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
+                document.getElementById('minutes').innerText = m < 10 ? '0'+m : m;
+                document.getElementById('seconds').innerText = s < 10 ? '0'+s : s;
+            }, 1000);
+        }
+    }
+
+    if(typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    }
+
+    startUtils();
+});
+
+
+
+  
+   
+    const targetDate = new Date("2026-09-26T10:00:00+07:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+            document.getElementById("days").textContent = "00";
+            document.getElementById("hours").textContent = "00";
+            document.getElementById("minutes").textContent = "00";
+            document.getElementById("seconds").textContent = "00";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor(
+            (distance % (1000 * 60)) / 1000
+        );
+
+        document.getElementById("days").textContent = String(days).padStart(2, "0");
+        document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+        document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  const params = new URLSearchParams(window.location.search);
+const namaTamu = params.get("to");
+
+if (namaTamu) {
+    document.getElementById("guestNameDisplay").textContent = namaTamu;
+}
+</script>
+</body>
+</html>
